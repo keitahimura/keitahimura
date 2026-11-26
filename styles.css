@@ -312,6 +312,10 @@ h2 {
     display: none;
 }
 
+.about-tab-panel h3 {
+    margin: 0 0 0.75rem;
+}
+
 #about-details-choice:checked ~ .about-tab-panels #about-details,
 #about-songs-choice:checked ~ .about-tab-panels #about-songs {
     display: block;
@@ -540,6 +544,12 @@ h2 {
     color: var(--red);
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
+}
+
+@media (min-width: 901px) {
+    .achievement-item + .achievement-item {
+        margin-top: 1.25rem;
+    }
 }
 
 /* === WORKS SECTION === */
@@ -920,6 +930,38 @@ footer {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
+    .navbar {
+        gap: 0.75rem;
+        padding: 0.65rem 1rem;
+    }
+
+    .logo img {
+        width: clamp(48px, 8vw, 64px);
+    }
+
+    .nav-links {
+        max-width: calc(100% - 90px);
+        gap: clamp(0.55rem, 1.5vw, 1rem);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+    }
+
+    .introduction {
+        padding-top: 5.5rem;
+    }
+
+    .container {
+        width: min(92%, 700px);
+    }
+
     .works-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
@@ -949,32 +991,31 @@ footer {
     .about-grid {
         grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
         gap: clamp(0.75rem, 3vw, 2rem);
-    }
-
-    .work-grid {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-        gap: clamp(0.75rem, 3vw, 2rem);
-    }
-
-    .work-number {
-        min-height: 0;
-        max-width: 100%;
-    }
-
-    .work-logo {
-        max-width: clamp(90px, 18vw, 180px);
+        align-items: start;
     }
 
     .about-grid > img {
         max-width: 100%;
     }
 
-    .navbar {
-        padding: 1rem 1.5rem;
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 
-    .nav-links {
-        gap: 1rem;
+    .work-number {
+        min-height: 0;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .work-logo {
+        max-width: clamp(90px, 18vw, 180px);
+    }
+
+    .achievement-item {
+        grid-template-columns: 6.5rem 1fr;
+        gap: 1.25rem;
     }
 }
 
@@ -998,37 +1039,41 @@ footer {
     }
 
     .navbar {
-        flex-wrap: nowrap;
-        gap: 0.3rem;
-        padding: 0.45rem 0.6rem;
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        align-items: center;
+        gap: 0.25rem 0.5rem;
+        padding: 0.35rem 0.45rem;
     }
 
     .logo {
         flex: 0 0 auto;
-        margin-right: auto;
+        margin: 0;
+        justify-self: start;
     }
 
     .logo img {
-        width: clamp(28px, 8vw, 40px);
+        width: 40px;
     }
 
     .nav-links {
-        flex: 0 1 auto;
-        justify-content: flex-end;
-        flex-wrap: nowrap;
-        gap: clamp(0.2rem, 1vw, 0.5rem);
+        width: 100%;
+        max-width: none;
+        justify-content: flex-start;
+        gap: 0.75rem;
         margin: 0;
+        padding: 0.15rem 0;
     }
 
     .nav-links a {
-        font-size: clamp(0.38rem, 1.8vw, 0.58rem);
-        letter-spacing: 0;
+        font-size: 0.58rem;
+        letter-spacing: 0.02em;
     }
 
     .introduction {
         height: 100vh;
         min-height: 100svh;
-        padding: 5rem 0 2rem;
+        padding: 6.25rem 0 2rem;
     }
 
     .introduction-content {
@@ -1118,8 +1163,8 @@ footer {
     }
 
     .work-grid {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-        gap: 0.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .work-number {
@@ -1129,7 +1174,67 @@ footer {
     }
 
     .work-logo {
-        max-width: 82px;
+        max-width: 100px;
+    }
+
+    .works-grid,
+    .works-grid.works-grid--single {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .works-tabs {
+        flex-wrap: wrap;
+    }
+
+    .achievement-item {
+        grid-template-columns: 4.25rem minmax(0, 1fr);
+        align-items: start;
+        gap: 0.75rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .achievement-year {
+        font-size: 2rem;
+    }
+
+    .achievement-content h3 {
+        font-size: 1rem;
+    }
+
+    .achievement-content p {
+        font-size: 0.8rem;
+    }
+
+    .artwork-viewer {
+        padding: 4.75rem 0.75rem 1rem;
+    }
+
+    .artwork-viewer-nav {
+        top: auto;
+        bottom: 0.75rem;
+        min-height: 2.25rem;
+        padding: 0.45rem 0.65rem;
+        transform: none;
+    }
+
+    .artwork-viewer-nav--previous {
+        left: 0.75rem;
+    }
+
+    .artwork-viewer-nav--next {
+        right: 0.75rem;
+    }
+
+    .artwork-viewer-content img {
+        max-height: 58vh;
+        max-height: 58svh;
+    }
+
+    .artwork-viewer-content figcaption {
+        padding-top: 0.75rem;
     }
 
     .school-timeline-list {
